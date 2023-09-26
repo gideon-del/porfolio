@@ -58,13 +58,13 @@ export default function Home() {
             duration: 0.5,
           },
         }}
-        className="text-white flex max-w-7xl mx-auto bg-primary py-6 px-3 justify-between sticky top-0 inset-x-0 z-50"
+        className="text-white flex max-w-7xl mx-auto bg-primary py-6 px-3 justify-between  sticky top-0 inset-x-0 z-50"
       >
         <Link href={"/"} className="font-bold text-4xl basis-1/3 ">
           <span>Gideon.</span>
         </Link>
         <nav
-          className={`flex-1 flex flex-col justify-between items-center  font-normal px-7 md:relative md:h-auto fixed w-screen h-screen bg-primary md:flex-row inset-0 py-10 md:py-0 md:translate-x-0 ${
+          className={`flex-1 flex flex-col md:justify-between gap-8 justify-center items-center  font-normal px-7 md:relative md:h-auto fixed w-screen h-screen bg-primary md:flex-row inset-0 py-10 md:py-0 md:translate-x-0 ${
             showNav ? "-translate-x-0" : "-translate-x-full"
           } transition`}
         >
@@ -166,7 +166,7 @@ export default function Home() {
         className="flex flex-col items-center justify-center gap-10  md:p-32 p-10 mt-10"
       >
         <h2 className=" md:text-4xl lg:text-6xl text-lg text-center font-medium capitalize">
-          Keep in touch with me <br /> Say Hi
+          Keep in touch with me
         </h2>
         <Link href="mailto:gideonchidi471@gmail.com">
           <button className="px-8 font-bold py-5 bg-white text-primary text-sm ">
