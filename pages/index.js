@@ -11,6 +11,7 @@ import { BsTwitter, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { LiaTimesSolid } from "react-icons/lia";
 import { motion } from "framer-motion";
+import reactImg from "@/public/react.svg";
 const projects = [
   {
     img: project_1,
@@ -41,7 +42,20 @@ const projects = [
     preview: "https://medical-appointment-ten.vercel.app/",
   },
 ];
-const navLinks = ["about", "projects"];
+const skills = [
+  "React",
+  "Typescript",
+  "HTML",
+  "CSS",
+  "TailwindCSS",
+  "Redux",
+  "JavaScript",
+  "Firebase",
+  "SuperBase",
+  "Framer Motion",
+  "NextJS",
+];
+const navLinks = ["about", "projects", "skills"];
 export default function Home() {
   const [showNav, setShowNav] = useState(false);
 
@@ -151,6 +165,20 @@ export default function Home() {
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcvXN1PQAGtgKQxVTcnwAAAABJRU5ErkJggg=="
             />
           </motion.div>
+        </section>
+        <section id="skills" className="mb-4 max-w-7xl mx-auto">
+          <div className="h-3 w-48 bg-white mb-4"></div>
+          <h2 className="text-4xl font-bold mb-4">My skills</h2>
+          <div className="grid grid-cols-2 gap-5 items-center md:grid-cols-3 lg:grid-cols-5">
+            {skills.map((skill, i) => (
+              <div
+                key={i}
+                className="capitalize shadow-md bg-black/50 px-4 py-4 rounded-full"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
         </section>
         <section id="projects" className="">
           <div className="max-w-7xl mx-auto">
