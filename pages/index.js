@@ -6,6 +6,10 @@ import project2 from "@/public/project-2.png";
 import project3 from "@/public/project-3.png";
 import project4 from "@/public/project-4.png";
 import Project from "@/components/project";
+import { useState } from "react";
+import { BsTwitter, BsGithub, BsLinkedin } from "react-icons/bs";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { LiaTimesSolid } from "react-icons/lia";
 const projects = [
   {
     img: project_1,
@@ -36,36 +40,53 @@ const projects = [
     preview: "https://medical-appointment-ten.vercel.app/",
   },
 ];
+const navLinks = ["about", "projects"];
 export default function Home() {
+  const [showNav, setShowNav] = useState(false);
+
   return (
     <>
-      <header className="text-white flex max-w-7xl mx-auto py-6">
-        <Link href={"/"} className="font-bold text-4xl basis-1/3">
+      <header className="text-white flex max-w-7xl mx-auto bg-primary py-6 px-3 justify-between sticky top-0 inset-x-0">
+        <Link href={"/"} className="font-bold text-4xl basis-1/3 ">
           <span>Gideon.</span>
         </Link>
-        <nav className="flex-1 flex justify-between items-center font-normal px-7">
-          <ul className="flex gap-4 items-center">
-            <li>
-              <Link href={"/#about"}>About</Link>
-            </li>
-            <li>
-              <Link href={"/#projects"}>Projects</Link>
-            </li>
-            <li>
-              <Link href={"/#services"}>Services</Link>
-            </li>
+        <nav
+          className={`flex-1 flex flex-col justify-between items-center  font-normal px-7 md:relative md:h-auto fixed w-screen h-screen bg-primary md:flex-row inset-0 py-10 md:py-0 md:translate-x-0 ${
+            showNav ? "-translate-x-0" : "-translate-x-full"
+          } transition`}
+        >
+          <p className="font-bold text-4xl md:hidden flex justify-between items-center">
+            Gideon.
+            <span
+              className=" absolute top-5 right-3"
+              onClick={() => setShowNav(false)}
+            >
+              <LiaTimesSolid />
+            </span>
+          </p>
+          <ul className="flex gap-4 items-center flex-col md:flex-row">
+            {navLinks.map((link) => (
+              <li key={link} className="capitalize">
+                <Link href={`/#${link}`} onClick={() => setShowNav(false)}>
+                  {link}
+                </Link>
+              </li>
+            ))}
           </ul>
           <button className="px-3 py-2 border border-white">Contact</button>
         </nav>
+        <button className="md:hidden text-2xl" onClick={() => setShowNav(true)}>
+          <FaBarsStaggered />
+        </button>
       </header>
-      <main className="text-white">
+      <main className="text-white px-5">
         <section
           id="about"
-          className="max-w-7xl mx-auto grid grid-cols-2 justify-center mb-10 "
+          className="max-w-7xl mx-auto md:grid md:grid-cols-2 flex flex-col-reverse md:gap-7  gap-6 justify-center mb-10 items-center "
         >
-          <div className="self-center flex flex-col gap-6">
-            <div className="h-3 w-48 bg-white mb-4"></div>
-            <h2 className="uppercase font-bold text-4xl max-w-xs mb-4">
+          <div className="self-center flex flex-col md:gap-6 gap-5 text-center">
+            <div className="h-3 w-48 bg-white md:mb-4"></div>
+            <h2 className="uppercase font-bold text-4xl max-w-xs  text-center md:text-start">
               i&apos;m Gideon a web Developer
             </h2>
             <p className="max-w-lg font-medium">
@@ -75,10 +96,23 @@ export default function Home() {
               technology can transform ideas into interactive and user-friendly
               interfaces.
             </p>
-            <button className="bg-white px-8 text-center py-4 text-primary font-bold text-xl w-fit">
+            <button className="bg-white px-8 text-center md:mx-0 mx-auto py-4 text-primary font-bold text-xl w-fit">
               Let&apos;s talk
             </button>
-            <div></div>
+            <div className="text-2xl flex gap-4 md:self-start items-center self-center">
+              <Link href="https://twitter.com/ChidiGideon6" target="_blank">
+                <BsTwitter />
+              </Link>
+              <Link href={"https://github.com/gideon-del"} target="_blank">
+                <BsGithub />
+              </Link>
+              <Link
+                href={"https://www.linkedin.com/in/chidi-gideon-aaa3081bb/"}
+                target="_blank"
+              >
+                <BsLinkedin />
+              </Link>
+            </div>
           </div>
           <div>
             <Image src={profile} alt="My profile" />
@@ -101,6 +135,28 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer
+        id="contacts"
+        className="flex flex-col items-center justify-center gap-10  p-32"
+      >
+        <h2 className=" text-6xl text-center font-medium capitalize">
+          Keep in touch with me <br /> Say Hi
+        </h2>
+        <div className="text-2xl flex gap-4  items-center self-center">
+          <Link href="https://twitter.com/ChidiGideon6" target="_blank">
+            <BsTwitter />
+          </Link>
+          <Link href={"https://github.com/gideon-del"} target="_blank">
+            <BsGithub />
+          </Link>
+          <Link
+            href={"https://www.linkedin.com/in/chidi-gideon-aaa3081bb/"}
+            target="_blank"
+          >
+            <BsLinkedin />
+          </Link>
+        </div>
+      </footer>
     </>
   );
 }
