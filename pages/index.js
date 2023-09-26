@@ -10,6 +10,7 @@ import { useState } from "react";
 import { BsTwitter, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { LiaTimesSolid } from "react-icons/lia";
+import { motion } from "framer-motion";
 const projects = [
   {
     img: project_1,
@@ -46,7 +47,19 @@ export default function Home() {
 
   return (
     <>
-      <header className="text-white flex max-w-7xl mx-auto bg-primary py-6 px-3 justify-between sticky top-0 inset-x-0">
+      <motion.header
+        initial={{ y: "-100%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          opacity: {
+            duration: 1,
+          },
+          y: {
+            duration: 0.5,
+          },
+        }}
+        className="text-white flex max-w-7xl mx-auto bg-primary py-6 px-3 justify-between sticky top-0 inset-x-0 z-50"
+      >
         <Link href={"/"} className="font-bold text-4xl basis-1/3 ">
           <span>Gideon.</span>
         </Link>
@@ -73,18 +86,25 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <button className="px-3 py-2 border border-white">Contact</button>
+          <Link href="mailto:gideonchidi471@gmail.com">
+            <button className="px-3 py-2 border border-white">Contact</button>
+          </Link>
         </nav>
         <button className="md:hidden text-2xl" onClick={() => setShowNav(true)}>
           <FaBarsStaggered />
         </button>
-      </header>
+      </motion.header>
       <main className="text-white px-5">
         <section
           id="about"
-          className="max-w-7xl mx-auto md:grid md:grid-cols-2 flex flex-col-reverse md:gap-7  gap-6 justify-center mb-10 items-center "
+          className="max-w-7xl mx-auto md:grid md:grid-cols-2 flex flex-col-reverse md:gap-7  gap-6 justify-center mb-10 items-center overflow-x-hidden z-30 "
         >
-          <div className="self-center flex flex-col md:gap-6 gap-5 text-center">
+          <motion.div
+            animate={{ x: "0", opacity: 1 }}
+            initial={{ x: "-100%", opacity: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="self-center flex flex-col md:gap-6 gap-5 md:text-start text-center"
+          >
             <div className="h-3 w-48 bg-white md:mb-4"></div>
             <h2 className="uppercase font-bold text-4xl max-w-xs  text-center md:text-start">
               i&apos;m Gideon a web Developer
@@ -96,9 +116,11 @@ export default function Home() {
               technology can transform ideas into interactive and user-friendly
               interfaces.
             </p>
-            <button className="bg-white px-8 text-center md:mx-0 mx-auto py-4 text-primary font-bold text-xl w-fit">
-              Let&apos;s talk
-            </button>
+            <Link href={"mailto:gideonchidi471@gmail.com"}>
+              <button className="bg-white px-8 text-center md:mx-0 mx-auto py-4 text-primary font-bold text-xl w-fit">
+                Let&apos;s talk
+              </button>
+            </Link>
             <div className="text-2xl flex gap-4 md:self-start items-center self-center">
               <Link href="https://twitter.com/ChidiGideon6" target="_blank">
                 <BsTwitter />
@@ -113,10 +135,14 @@ export default function Home() {
                 <BsLinkedin />
               </Link>
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            animate={{ x: "0", opacity: 1 }}
+            initial={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
             <Image src={profile} alt="My profile" />
-          </div>
+          </motion.div>
         </section>
         <section id="projects" className="">
           <div className="max-w-7xl mx-auto">
@@ -137,25 +163,16 @@ export default function Home() {
       </main>
       <footer
         id="contacts"
-        className="flex flex-col items-center justify-center gap-10  p-32"
+        className="flex flex-col items-center justify-center gap-10  md:p-32 p-10 mt-10"
       >
-        <h2 className=" text-6xl text-center font-medium capitalize">
+        <h2 className=" md:text-4xl lg:text-6xl text-lg text-center font-medium capitalize">
           Keep in touch with me <br /> Say Hi
         </h2>
-        <div className="text-2xl flex gap-4  items-center self-center">
-          <Link href="https://twitter.com/ChidiGideon6" target="_blank">
-            <BsTwitter />
-          </Link>
-          <Link href={"https://github.com/gideon-del"} target="_blank">
-            <BsGithub />
-          </Link>
-          <Link
-            href={"https://www.linkedin.com/in/chidi-gideon-aaa3081bb/"}
-            target="_blank"
-          >
-            <BsLinkedin />
-          </Link>
-        </div>
+        <Link href="mailto:gideonchidi471@gmail.com">
+          <button className="px-8 font-bold py-5 bg-white text-primary text-sm ">
+            Let&apos;s have a conversation
+          </button>
+        </Link>
       </footer>
     </>
   );
