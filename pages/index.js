@@ -87,7 +87,9 @@ export default function Home() {
             ))}
           </ul>
           <Link href="mailto:gideonchidi471@gmail.com">
-            <button className="px-3 py-2 border border-white">Contact</button>
+            <button className="px-3 py-2 border border-white">
+              Contact Me
+            </button>
           </Link>
         </nav>
         <button className="md:hidden text-2xl" onClick={() => setShowNav(true)}>
@@ -141,7 +143,13 @@ export default function Home() {
             initial={{ x: "100%", opacity: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
           >
-            <Image src={profile} alt="My profile" />
+            <Image
+              src={profile}
+              alt="My profile"
+              placeholder="blur"
+              priority
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcvXN1PQAGtgKQxVTcnwAAAABJRU5ErkJggg=="
+            />
           </motion.div>
         </section>
         <section id="projects" className="">
